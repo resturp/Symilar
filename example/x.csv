@@ -1,0 +1,1633 @@
+Assignment 0:: Hashing,1,Student_101,2014-02-23 16:57:09.961463,"import numpy as np
+
+def analyse_collisions(K, N, L):
+    return np.bincount(np.bincount(np.random.random_integers(N, None, K), None, N + 1)[1:], None, L + 1)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testUseNumpy <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,19,40,40,Ed Balls
+Assignment 0:: Hashing,1,Student_102,2014-02-27 20:28:23.439028,"import numpy
+def analyse_collisions(K, N, L):
+    arr = [0]*N
+    for x in xrange(K):
+        random_number = numpy.random.random_integers(N)
+        arr[random_number-1] = arr[random_number-1] + 1
+        
+    counts = [0] * (L + 1)
+    
+    for x in xrange(L+1):
+        counts[x] = arr.count(x)
+        
+    return counts","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/time.png"" alt=time> testUseNumpy <a href='#' onclick=""showDialog('It took more then 2.5 seconds to execute this test \n Use numpy to speed up your code. ');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:35 out of 40 is 87%",87,3,40,40,Student16
+Assignment 0:: Hashing,1,Student_103,2014-03-07 21:18:42.071384,"import numpy
+
+def analyse_collisions(K, N, L): 
+    randoms = [0] * N
+    randoms = numpy.array(randoms)
+    if K == 0:
+        return [0]* (L+1)
+    if(N<2):
+        return [0,1]
+    r = numpy.random.randint(1,N, size=K)
+    randoms = numpy.bincount(r)
+    counts = numpy.bincount(randoms).tolist()
+    counts = counts + ([0] * (L+1 -len(counts)))
+    return counts","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testEmptyBuckets <a href='#' onclick=""showDialog('\n 5 random element are distributed over 10 buckets. I would presume that\n        4 < the number of empty buckets < 10. At least 1 bucket should contain more\n        than 0 elements.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testUseNumpy <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testZeroTenOne <a href='#' onclick=""showDialog('\n If no random numbers are generated all bucket should be empty.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 40 is 75%",75,38,40,40,ctrl+alt+delete
+Assignment 0:: Hashing,1,Student_104,2014-02-23 14:06:50.960871,"from numpy import *
+
+def analyse_collisions(K,N,L):
+    
+    Ks=random.randint(N,size=K)
+
+    if(K>0):
+        Ns=bincount(Ks,minlength=N)
+    else:
+        Ns=[0]*N
+   
+    Ls=bincount(Ns,minlength=L+1)
+    return Ls","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testUseNumpy <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,20,40,40,JTL
+Assignment 0:: Hashing,1,Student_105,2014-03-05 07:28:49.752239,"from numpy import random,bincount
+
+def analyse_collisions(K, N, L):
+	# K = 100 # # Objects
+	# N = 1000 # # Buckets
+	# L = 5 # Count size
+	buckets = [0] * N # # of objects in bucket
+	rand_int = random.randint(1, N + 1, K) # Random objects						
+	# Count elements in buckets
+	for v in rand_int:
+		buckets[v-1] += 1
+
+	return bincount(buckets, minlength=L+1)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/time.png"" alt=time> testUseNumpy <a href='#' onclick=""showDialog('It took more then 2.5 seconds to execute this test \n Use numpy to speed up your code. ');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:35 out of 40 is 87%",87,12,40,40,Michiel
+Assignment 0:: Hashing,1,Student_106,2014-02-15 18:51:10.333572,"import numpy
+def analyse_collisions(K, N, L):
+    """""" analyse collisions
+    K = number of integers
+    N = range (1..N inclusive)
+    L = return the number of Count(0..L)
+    """"""
+    buckets = numpy.random.randint(N, size=K)
+    number_in_buckets = numpy.bincount(buckets, minlength=N)
+    number_of_collisions = numpy.bincount(number_in_buckets, minlength=L+1)
+    return number_of_collisions[0:L+1]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testUseNumpy <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,4,40,40,Mathijs
+Assignment 0:: Hashing,1,Student_107,2014-03-04 09:47:01.383855,"from numpy import random
+
+def analyse_collisions(K, N, L):
+    randoms = [0]*N
+    counts = [0]*(L+1)
+    for i in range(K):
+        r = random.randint(0,N)
+        randoms[r] += 1
+    for j in range(L+1):
+        counts[j] = randoms.count(j)
+    return counts","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/time.png"" alt=time> testUseNumpy <a href='#' onclick=""showDialog('It took more then 2.5 seconds to execute this test \n Use numpy to speed up your code. ');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:35 out of 40 is 87%",87,19,40,40,peeth
+Assignment 0:: Hashing,1,Student_108,2014-02-21 09:10:44.682004,"import numpy as np
+
+
+def analyse_collisions(K, N, L):
+    object_amount = K
+    bucket_amount = N
+    population_threshold = L
+    
+    #Creates a list with all the objects, with values that correspond to which bucket the object is assigned to
+    objects =  (np.random.random_integers(1,bucket_amount,object_amount))
+    
+    #Creates a list of buckets, with values that correspond to the amount of objects that each bucket holds
+    collisions = np.zeros(bucket_amount)
+
+    Counts = np.zeros(L+1, int)
+
+    
+    #populates the list of buckets by iterating over the object list 
+    for obj in objects:
+        collisions[obj-1] += 1
+    
+        
+    for i in range(L+1):
+        for col in collisions:
+            if col == i:
+                Counts[col] +=1
+     
+    return Counts
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testUseNumpy <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,25,40,40,pavlos
+Assignment 0:: Hashing,1,Student_109,2014-02-24 20:23:39.686884,"import numpy as np
+
+# K = number of ints
+# N = interval 1..N
+# L = vector of L+1 counts to return
+def analyse_collisions(K, N, L):
+    # If you need to know more about arrays, concatenating arrays, 
+    # random number generation or numpy you can enroll for the 
+    # introduction course.
+    counts = [0] * (L + 1)
+    if(N!=1):
+        randomInts = np.random.randint(1, N, K)
+    else:
+        randomInts = [1]*K
+    occurrences = np.bincount(randomInts, minlength=N+1).tolist()
+    return np.bincount(occurrences[1:], minlength=L+1).tolist()","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testUseNumpy <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,19,40,40,Pepijn
+Assignment 0:: Hashing,1,Student_110,2014-02-17 22:00:03.844592,"import numpy as np
+
+def analyse_collisions(K, N, L):
+    buckets = np.random.random_integers(1, N, K)
+    bins = np.bincount(buckets, minlength = N + 1)
+    counts = np.bincount(bins[1:], minlength = L + 1)
+    return counts[:L + 1]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testUseNumpy <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,6,40,40,Ruud
+Assignment 0:: Hashing,1,Student_111,2014-03-08 15:07:58.484396,"import numpy
+
+def analyse_collisions(K, N, L):
+    
+    numbers = numpy.random.randint(N, size=K)
+    bins = numpy.bincount(numbers, minlength=N)
+
+    counts = numpy.bincount(bins, minlength=L+1)
+    
+    return counts[:(L+1)]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testUseNumpy <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,10,40,40,Sander
+Assignment 0:: Hashing,1,Student_112,2014-02-28 10:18:00.658118,"import numpy
+def analyse_collisions(K, N, L):
+    r = [0] * N
+    out = [0] * (L+1)
+    if N != 1:
+        kati = numpy.random.randint(1,N,size=K)
+        for i in range(K):
+            r[kati[i]] += 1
+    else:
+        r[0] = K
+    for i in range(L+1):
+        out[i] = r.count(i)
+    return out","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/time.png"" alt=time> testUseNumpy <a href='#' onclick=""showDialog('It took more then 2.5 seconds to execute this test \n Use numpy to speed up your code. ');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:35 out of 40 is 87%",87,10,40,40,Thodoris
+Assignment 0:: Hashing,1,Student_113,2014-02-22 12:45:27.118251,"from numpy import random as r
+import numpy as np
+
+def analyse_collisions(K, N, L):
+    ints = r.randint(1,N+1,K)
+    distr = np.bincount(ints,minlength=N+1)[1:]
+    return np.bincount(distr,minlength=L+1)[:L+1]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBucketsWithOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOneOneOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSumIsNum <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTotalDistribution <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testUseNumpy <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroTenOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,3,40,40,Justin Time
+Assignment 0:: Hashing,2,Student_101,2014-02-23 17:07:15.066139,"import numpy as np
+
+def analyse_collisions(K, N, L):
+    return np.bincount(np.random.binomial(K, 1.0 / N, N))[:L + 1]
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 66 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nMessage\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Would you expect 671 buckets to contain less then 900 elements?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,10,40,50,Ed Balls
+Assignment 0:: Hashing,2,Student_102,2014-02-27 21:57:09.799807,"import numpy
+def analyse_collisions(K, N, L):
+    
+    arr = numpy.random.binomial(K, 1.0/N, N)
+    
+    counts = [0] * (L + 1)
+    
+    for x in xrange(L+1):
+        counts[x] = (arr == x).sum()
+        
+    return counts","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 66 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nMessage\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Would you expect 671 buckets to contain less then 900 elements?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Student16
+Assignment 0:: Hashing,2,Student_103,2014-03-04 17:14:44.600152,"import numpy
+from collections import Counter
+def analyse_collisions(K, N, L):
+    randoms = numpy.random.binomial(K, 1.0/N, N).tolist()
+    counts = []
+    a = Counter(randoms)
+    for i in range(L+1):
+        counts.append(a[i])
+    return counts","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 59 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nError\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Your analysis should produce an expectation of bins containing less then 900 elements of about 650.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 50 is 60%",60,9,40,50,ctrl+alt+delete
+Assignment 0:: Hashing,2,Student_104,2014-02-25 17:47:08.597314,"from numpy import *
+
+def analyse_collisions(K,N,L):
+ 
+    Ns=random.binomial(K,1/float(N),N)
+    Ls=bincount(Ns,minlength=L+1)
+
+    return Ls[:(L+1)]
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 66 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nMessage\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Would you expect 671 buckets to contain less then 900 elements?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,5,40,50,JTL
+Assignment 0:: Hashing,2,Student_105,2014-03-05 07:33:00.365239,"from numpy import random, bincount
+
+def analyse_collisions(K, N, L):
+	buckets = random.binomial(K, 1.0/N, N)
+	return bincount(buckets, minlength=L+1)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 59 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nError\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Your analysis should produce an expectation of bins containing less then 900 elements of about 650.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 50 is 60%",60,8,40,50,Michiel
+Assignment 0:: Hashing,2,Student_106,2014-02-15 19:02:43.910645,"import numpy
+def analyse_collisions(K, N, L):
+    """""" analyse collisions
+    K = number of integers
+    N = range (1..N inclusive)
+    L = return the number of Count(0..L)
+    """"""
+    number_in_buckets = numpy.random.binomial(K, 1.0/N, N)
+    number_of_collisions = numpy.bincount(number_in_buckets, minlength=L+1)
+    return number_of_collisions[0:L+1]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 73 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nMessage\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Would you expect 611 buckets to contain less then 900 elements?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Mathijs
+Assignment 0:: Hashing,2,Student_107,2014-02-28 17:52:36.53122,"from numpy import random
+
+def analyse_collisions(K, N, L):
+    counts = [0]*(L)
+    r = random.binomial(K, 1.0/N, N)
+    r = r.tolist()
+    for i in range(L):    
+        counts[i] = r.count(i)
+    return counts","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 66 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/time.png"" alt=time> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('It took more then 2.5 seconds to execute this test \nError\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Your analysis should produce an expectation of bins containing less then 900 elements of about 650.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 50 is 60%",60,7,40,50,peeth
+Assignment 0:: Hashing,2,Student_108,2014-02-14 17:29:16.562242,"import numpy as np
+
+def analyse_collisions(K, N, L):
+    object_amount = K
+    bucket_amount = N
+    population_threshold = L
+    
+    collisions =np.array(np.random.binomial(object_amount, 1/float(bucket_amount), bucket_amount))
+    print collisions
+    print collisions.size
+
+    
+    """"""counts = np.zeros(object_amount)
+    for col in collisions:
+        counts[col] += 1""""""
+    counts = np.zeros(L+1)
+        
+    for i in range(L+1):
+        for col in collisions:
+            if col == i:
+                counts[col] +=1
+     
+    
+    
+    
+    return counts
+
+
+
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 73.0 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nMessage\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Would you expect 611.0 buckets to contain less then 900 elements?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,13,40,50,pavlos
+Assignment 0:: Hashing,2,Student_109,2014-02-24 21:40:23.753649,"import numpy as np
+
+def analyse_collisions(K, N, L):
+    randomInts = np.random.binomial(K, 1./N, N)
+    return np.bincount(randomInts, minlength=L+1).tolist()[:L+1]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 66 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nMessage\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Would you expect 671 buckets to contain less then 900 elements?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,14,40,50,Pepijn
+Assignment 0:: Hashing,2,Student_110,2014-02-23 16:43:02.943422,"import numpy as np
+
+def analyse_collisions(K, N, L):
+    buckets = np.random.binomial(K, 1/float(N), N)
+    counts = np.bincount(buckets, minlength = L + 1)
+    return counts[:L + 1]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 66 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nMessage\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Would you expect 671 buckets to contain less then 900 elements?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,2,40,50,Ruud
+Assignment 0:: Hashing,2,Student_111,2014-03-08 15:26:52.440861,"import numpy
+
+def analyse_collisions(K, N, L):
+    
+    numbers = numpy.random.binomial(K, 1/float(N), N)
+    numbers = numbers[:N]
+
+    counts = numpy.bincount(numbers, minlength=L+1)
+    
+    return counts[:(L+1)]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 57 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nMessage\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Would you expect 695 buckets to contain less then 900 elements?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,4,40,50,Sander
+Assignment 0:: Hashing,2,Student_112,2014-02-28 09:46:42.515284,"import numpy
+def analyse_collisions(K, N, L):
+    out = [0] * (L+1)
+    r = numpy.random.binomial(K,1.0/N,N)
+    r = r.tolist()
+    for i in range(L+1):
+        out[i] = r.count(i)
+    return out","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 66 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/time.png"" alt=time> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('It took more then 2.5 seconds to execute this test \nError\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Your analysis should produce an expectation of bins containing less then 900 elements of about 650.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 50 is 60%",60,1,40,50,Thodoris
+Assignment 0:: Hashing,2,Student_113,2014-02-22 13:51:14.384106,"import numpy as np
+
+def analyse_collisions(K, N, L):
+    return np.bincount(np.random.binomial(K, 1.0/N, size=N+1),minlength=L+1)[:L+1]
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBins <a href='#' onclick=""showDialog('\nMessage:\n    \n           After tossing 1000 elements into 500 buckets, \n           Your method expects 67 empty bins. Is this what you would expect?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/message.png"" alt=message> testNumberEmptyBinsExtreme <a href='#' onclick=""showDialog('\nMessage\n    \n           After tossing 10^9 elements into 10^6 buckets, \n           Would you expect 671 buckets to contain less then 900 elements?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,13,40,50,Justin Time
+Assignment 0:: Hashing,3,Student_101,2014-02-23 17:20:28.026465,"import numpy as np
+from scipy.stats import binom
+
+def analyse_collisions(K, N, L):
+    rv = binom(K, 1.0 / N)
+    x = np.arange(0, L + 1)
+    return rv.pmf(x) * N","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,5,40,20,Ed Balls
+Assignment 0:: Hashing,3,Student_102,2014-02-28 18:59:29.423152,"import numpy
+import scipy, scipy.stats
+
+def analyse_collisions(K, N, L):
+    tries = range(N)
+    prob = scipy.stats.binom.cdf(tries, K, 1.0/N)
+    
+    return prob","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testEmptyBuckets <a href='#' onclick=""showDialog('\n 5 random elements are distributed over 10 buckets. I would presume that\n        4 < the number of empty buckets < 10. most items will and up in a bucket\n        without any other items. so vector[0] should should be a float and close to 5');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testEmptyBuckets3 <a href='#' onclick=""showDialog('\n 5 random elements are distributed over 10 buckets. I would presume that\n        4 < the number of empty buckets < 10. most items will and up in a bucket\n        without any other items. so vector[1] should should be a float and \n        somewhere between 3.0 and 5');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 20 is 50%",50,8,40,20,Student16
+Assignment 0:: Hashing,3,Student_103,2014-02-28 10:02:14.203338,"from math import factorial
+def analyse_collisions(K, N, L):
+    f = []
+    for i in range(L+1):
+        f.append(N*float((factorial(K))/(factorial(i)*factorial(K-i)))* ((1.0/N)**i) * ((1 -(1.0/N))**(K-i)))
+    return f","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,5,40,20,ctrl+alt+delete
+Assignment 0:: Hashing,3,Student_104,2014-02-27 13:16:39.351528,"from numpy import *
+from scipy.stats import *
+
+def analyse_collisions(K,N,L):
+    Ls=binom.pmf(range(K),K,1/float(N))
+    return Ls[:(L+1)]*N
+
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,4,40,20,JTL
+Assignment 0:: Hashing,3,Student_105,2014-03-05 07:38:39.756195,"from scipy import stats
+def analyse_collisions(K, N, L):
+	counts = [0] * (L + 1)
+	for i in range(L + 1):
+		counts[i] = stats.binom.pmf(i, K, 1/float(N)) * N
+
+	return counts","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,8,40,20,Michiel
+Assignment 0:: Hashing,3,Student_106,2014-03-21 09:22:41.993842,"import scipy.stats
+import numpy
+def analyse_collisions(K, N, L):
+    """""" analyse collisions
+    K objects
+    N buckets
+    L = return the number of Count(0..L)
+    """"""
+    rv = scipy.stats.binom(K, 1.0/N)
+    result = []
+    for i in range(0, L+1):
+        result.append(rv.pmf(i) * N)
+
+    return result","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,9,40,20,Mathijs
+Assignment 0:: Hashing,3,Student_107,2014-02-28 17:43:54.905389,"def parag(x):
+    y = 1
+    for i in range(1, x+1):
+        y = y*i
+    return y
+
+
+
+def analyse_collisions(K, N, L):
+    P = [0]*(L+1)
+    B = [0]*(L+1)
+    for i in range(L+1):
+        choose = parag(K)/parag(K-i)*parag(i)
+        P[i] = choose * (1.0/N)**i * (1.0-(1.0/N))**(K-i)
+        B[i] = P[i]*N
+    return B","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,7,40,20,peeth
+Assignment 0:: Hashing,3,Student_108,2014-02-21 09:23:16.804666,"import numpy as np
+from scipy.stats import binom
+
+def analyse_collisions(K, N, L):
+    object_amount = K
+    bucket_amount = N
+    population_threshold = L
+
+    counts = np.zeros(L+1)
+    for i in range(L+1):
+        counts[i] = binom.pmf(i,K,1/float(N)) * N
+    
+    return counts
+
+    ","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,19,40,20,pavlos
+Assignment 0:: Hashing,3,Student_109,2014-02-24 21:33:35.733518,"import numpy as np
+import scipy.stats as scp
+
+def analyse_collisions(K, N, L):
+    x = np.linspace(0, L, L+1);
+    return scp.binom.pmf(x, K, 1./N) * N","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,4,40,20,Pepijn
+Assignment 0:: Hashing,3,Student_110,2014-02-23 16:37:22.182146,"import numpy as np
+from scipy.stats import binom
+
+def analyse_collisions(K, N, L):
+    rv = binom(K, 1/float(N))
+    buckets = np.array([])
+    for i in range(L + 1):
+        buckets = np.append(buckets, rv.pmf(i))
+    return buckets * N
+    ","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,1,40,20,Ruud
+Assignment 0:: Hashing,3,Student_111,2014-03-08 15:49:09.23363,"import numpy
+from scipy.stats import binom
+
+def analyse_collisions(K, N, L):
+    
+    counts = binom.pmf(range(K), K, 1/float(N))
+    counts = counts * N
+    
+    return counts[:(L+1)]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,2,40,20,Sander
+Assignment 0:: Hashing,3,Student_112,2014-02-28 10:01:31.911485,"import numpy
+
+def parag(n):
+    out = 1
+    for i in range(n):
+        out *= i+1
+    return out
+def analyse_collisions(K, N, L):
+    out = [0]*(L+1)
+    for i in range(L+1):
+        choose = parag(K)/(parag(i)*parag(K-i))
+        upol = ((1.0/N)**i)*((1-(1.0/N))**(K-i))
+        out[i] = choose*upol*N
+    return out","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets2 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEmptyBuckets3 <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 20 is 100%",100,3,40,20,Thodoris
+Assignment 0:: Hashing,3,Student_113,2014-02-14 08:44:39.822455,"def analyse_collisions(K, N, L):
+
+    pass","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/exception.png"" alt=exception> testEmptyBuckets <a href='#' onclick=""showDialog('\n 5 random elements are distributed over 10 buckets. I would presume that\n        4 < the number of empty buckets < 10. most items will and up in a bucket\n        without any other items. so vector[1] should should be a float and close to 5\n\nTraceback (most recent call last):\n  File &quot;<string>&quot;, line 17, in runTestIXDWOZSEGQWQ\n  File &quot;<string>&quot;, line 44, in testEmptyBuckets\nTypeError: &lsquo;NoneType&lsquo; object has no attribute &lsquo;__getitem__&lsquo;\n');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/exception.png"" alt=exception> testEmptyBuckets2 <a href='#' onclick=""showDialog('\n 5 random elements are distributed over 10 buckets. I would presume that\n        4 < the number of empty buckets < 10. most items will and up in a bucket\n        without any other items. so vector[1] should should be a float and close to 5\n\nTraceback (most recent call last):\n  File &quot;<string>&quot;, line 17, in runTestIXDWOZSEGQWQ\n  File &quot;<string>&quot;, line 52, in testEmptyBuckets2\nTypeError: &lsquo;NoneType&lsquo; object has no attribute &lsquo;__getitem__&lsquo;\n');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/exception.png"" alt=exception> testEmptyBuckets3 <a href='#' onclick=""showDialog('\n 5 random elements are distributed over 10 buckets. I would presume that\n        4 < the number of empty buckets < 10. most items will and up in a bucket\n        without any other items. so vector[1] should should be a float and \n        somewhere between 4.8 and 5\n\nTraceback (most recent call last):\n  File &quot;<string>&quot;, line 17, in runTestIXDWOZSEGQWQ\n  File &quot;<string>&quot;, line 61, in testEmptyBuckets3\nTypeError: &lsquo;NoneType&lsquo; object has no attribute &lsquo;__getitem__&lsquo;\n');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:5 out of 20 is 25%",25,1,40,20,Justin Time
+Assignment 0:: Hashing,4,Student_101,2014-02-23 17:27:21.282019,"import numpy as np
+
+def anything():
+    return analyse_collisions(500, 1000, 5)
+
+def analyse_collisions(K, N, L):
+    return np.histogram(np.bincount(np.random.binomial(K, 1.0 / N, N), None, N + 1), np.arange(0, L + 1))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10",10,2,10,0,Ed Balls
+Assignment 0:: Hashing,4,Student_104,2014-02-27 13:25:17.336287,"def anything():
+    return 0","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10",10,2,10,0,JTL
+Assignment 0:: Hashing,4,Student_105,2014-03-05 07:39:36.666676,"def anything():
+    return None","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testExample <a href='#' onclick=""showDialog('\nFeedback for failing');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:0",0,4,10,0,Michiel
+Assignment 0:: Hashing,4,Student_106,2014-02-21 09:23:01.003133,"def anything():
+    return True","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10",10,2,10,0,Mathijs
+Assignment 0:: Hashing,4,Student_108,2014-02-14 17:40:45.457522,"def anything():
+    return 0
+    ","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10",10,7,10,0,pavlos
+Assignment 0:: Hashing,4,Student_109,2014-02-27 14:58:32.236655,"def anything():
+    return True
+
+
+    ","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10",10,3,10,0,Pepijn
+Assignment 0:: Hashing,4,Student_111,2014-03-08 01:31:34.908294,"def anything():
+
+    return 0","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10",10,2,10,0,Sander
+Assignment 0:: Hashing,4,Student_113,2014-02-13 16:21:17.784814,"def anything():
+    return True","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10",10,1,10,0,Justin Time
+Assignment 1: LSH,1,Student_101,2014-03-10 18:09:07.560817,"def jsim(s1, s2):
+    return len(s1 & s2) / float(len(s1 | s2))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Ed Balls
+Assignment 1: LSH,1,Student_103,2014-03-06 20:40:12.126793,"from __future__ import division
+import numpy
+
+def jsim(S1, S2):
+    return len(set.intersection(S1, S2))/len(set.union(S1, S2))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,5,40,50,ctrl+alt+delete
+Assignment 1: LSH,1,Student_104,2014-03-10 18:07:02.79543,"def jsim(s1,s2):
+    s12=s1|s2
+    s1=list(s1)
+    s2=list(s2)
+    
+    lens1=len(s1)
+    lens2=len(s2)
+
+
+    jacsim=float((lens1+lens2)-len(s12))/len(s12)
+    return jacsim","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,3,40,50,JTL
+Assignment 1: LSH,1,Student_105,2014-03-04 17:57:34.263036,"from sets import Set
+def jsim(s1, s2):
+	return float(len(Set(s1).intersection(Set(s2)))) / len(Set(s1).union(Set(s2)))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Michiel
+Assignment 1: LSH,1,Student_106,2014-02-28 10:34:55.530944,"import sets
+
+def jsim(s1, s2):
+    set1 = sets.ImmutableSet(s1)
+    set2 = sets.ImmutableSet(s2)
+    
+    intersection_len = len(set1.intersection(set2))
+    union_len = len(set1.union(set2))
+    
+    return float(intersection_len) / float(union_len)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,2,40,50,Mathijs
+Assignment 1: LSH,1,Student_107,2014-03-02 20:43:45.737973,"from __future__ import division
+
+def jsim(S1,S2):
+    x = set.intersection(S1,S2)
+    y = set.union(S1,S2)
+    z = len(list(x))/len(list(y))
+    return z","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,2,40,50,peeth
+Assignment 1: LSH,1,Student_108,2014-03-07 10:23:56.917833,"def jsim(set_1, set_2):
+    n = len(set_1.intersection(set_2))
+    print n , ""/"" , float(len(set_1) + len(set_2) - n)
+    return n / float(len(set_1) + len(set_2) - n) ","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,2,40,50,pavlos
+Assignment 1: LSH,1,Student_109,2014-03-09 19:34:37.850596,"import scipy
+import numpy
+import sets
+import random
+import math
+
+def jsim(s1, s2):
+    set1 = sets.ImmutableSet(s1)
+    set2 = sets.ImmutableSet(s2)
+    
+    intersection_len = len(set1.intersection(set2))
+    union_len = len(set1.union(set2))
+    
+    return float(intersection_len) / float(union_len)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,2,40,50,Pepijn
+Assignment 1: LSH,1,Student_110,2014-03-05 20:27:34.83757,"def jsim(s1, s2):
+    return len(s1 & s2) / float(len(s1 | s2))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,3,40,50,Ruud
+Assignment 1: LSH,1,Student_114,2014-03-09 18:26:57.152736,"def jsim(string_list1,string_list2):
+   l1_n_l2 = list(set(string_list1) & set(string_list2))
+   l1_u_l2 = list(set(string_list1) | set(string_list2))
+   jaccard_sim = len(l1_n_l2)/float(len(l1_u_l2))
+
+   return jaccard_sim","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,2,40,50,Student14
+Assignment 1: LSH,1,Student_111,2014-03-10 23:15:31.044733,"def jsim(s1,s2):
+    s12=set(s1)|set(s2)
+    s1=list(s1)
+    s2=list(s2)
+    
+    lens1=len(s1)
+    lens2=len(s2)
+    
+
+    jacsim=float((lens1+lens2)-len(s12))/len(s12)
+    return jacsim","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Sander
+Assignment 1: LSH,1,Student_112,2014-03-06 20:47:36.259213,"from __future__ import division
+
+def jsim(S1, S2):
+    return len(set.intersection(S1, S2))/len(set.union(S1, S2))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Thodoris
+Assignment 1: LSH,1,Student_113,2014-03-07 21:43:23.566367,"def jsim(S1,S2):
+    S1 = set(S1)
+    S2 = set(S2)
+    return len(S1.intersection(S2)) * 1.0 / len(S1.union(S2))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBigSet <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDiff <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testEqual <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalf <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Justin Time
+Assignment 1: LSH,2,Student_101,2014-03-10 19:46:58.115121,"import random
+import numpy as np
+
+def minhash(S, k):
+    num_docs = len(S)
+    
+    #Fill Words with all words in the documents
+    Words = set()
+    for i in range(num_docs):
+        Words = Words | S[i]
+    Words = list(Words)
+    
+    Signatures = []
+
+    perm = range(len(Words))
+    for i in range(k):
+        random.shuffle(perm)
+        sig = []
+        for j in range(num_docs):
+            count = 0
+            for k in range(len(Words)):
+                if Words[perm[k]] in S[j]:
+                    sig.append(count)
+                    break
+                else:
+                    count = count + 1
+        
+        Signatures.append(list(sig))
+    return Words, np.array(Signatures)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,4,40,25,Ed Balls
+Assignment 1: LSH,2,Student_103,2014-03-07 19:53:57.291841,"from __future__ import division
+from random import shuffle
+import numpy as np
+
+def minhash(S, k):
+    Words = set(S[0])
+    for i in xrange(len(S)-1):
+        Words = set.union(Words, set(S[i+1]))
+        Words = list(Words)
+        Words.sort()
+        doma = [[0 for col in range(len(Words))] for row in range(len(S))]
+        for i in xrange(len(S)):
+            for j in xrange(len(Words)):
+                if Words[j] in S[i]:
+                    doma[i][j] = 1
+        Signatures = [[0 for col in range(len(S))] for row in range(k)]
+        for rep in xrange(k):
+            shuf = range(len(Words))
+            shuffle(shuf)
+            for i in xrange(len(S)):
+                temp = [doma[i][j] for j in shuf]
+                Signatures[rep][i] = temp.index(1)+1
+    return [Words, np.array(Signatures)]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,15,40,25,ctrl+alt+delete
+Assignment 1: LSH,2,Student_104,2014-03-10 22:17:15.049211,"from numpy import *
+def minhash(S,k):
+    print(S)
+    sizeS=len(S)
+    words=set(S[0])
+    
+    for i in range(1,sizeS):
+        words=words|set(S[i])
+    words=list(words)
+    
+    
+    array01=zeros(sizeS*len(words)).reshape(len(words),sizeS)
+    S=list(S)
+    for i in range(0,len(words)):
+        for j in range(0,sizeS):
+            currow=S[j]
+            
+            if(words[i] in currow):
+                array01[i][j]=1
+    
+    
+    #retarray=zeros(len(words)*k).reshape(k,len(S))
+    retarray=[[None]*sizeS] *k
+    retarray=matrix(retarray)
+    for i in range(0,k):
+        #print(k)
+        perm=random.permutation(range(0,len(words)))
+        
+        for j in range(0,sizeS):
+            
+            for l in range(0,len(words)):
+                if(array01[perm[l],j]==1):
+                    retarray[i,j]=l
+                
+                
+
+    return (words,retarray)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,11,40,25,JTL
+Assignment 1: LSH,2,Student_105,2014-03-04 17:57:43.642368,"from numpy import zeros, random
+
+def minhash(S, k):
+	Words = list(set().union(*S)) # Figure 3.2 first column
+	Characteristics = zeros(shape=(len(Words), len(S))) # Figure 3.2 bit matrix
+	Signatures = zeros(shape=(k, len(S)))
+
+	for i, w in enumerate(Words):
+		for j in range(len(S)):
+			if w in S[j]:
+				Characteristics[i][j] = 1
+	#print Characteristics
+
+
+	for h in range(k):
+		rp = random.permutation(len(Words))
+		for j in range(len(S)):
+			w = 0
+			while Characteristics[rp[w]][j] != 1:
+				w += 1
+			Signatures[h][j] = w
+
+	#print Signatures
+	#print Words
+	return Words, Signatures","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,1,40,25,Michiel
+Assignment 1: LSH,2,Student_106,2014-02-28 10:35:27.90265,"import numpy
+import sets
+import random
+
+def minhash(S, k):
+    fullset = sets.Set();
+    singlesets = []
+    for s in S:
+        singlesets.append(sets.ImmutableSet(s))
+        fullset.update(s)
+    
+    perm = list(fullset)
+    result = numpy.empty((k, len(S)), dtype=int)
+    
+    for curk in range(k):
+        random.shuffle(perm)
+        for i in range(len(S)):
+            j = 0
+            while (j < len(perm)) and (perm[j] not in singlesets[i]):
+                j += 1
+            result[curk, i] = j
+    
+    return sorted(fullset), result","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,1,40,25,Mathijs
+Assignment 1: LSH,2,Student_107,2014-03-07 19:54:42.577351,"import random
+from random import shuffle
+import numpy as np
+
+def minhash(S, k):
+    words = []
+    for i in range(len(S)):
+        words = set.union(set(S[i]), set(words)) #maybe set(S[i])
+        words = list(words)
+        ole = [[0 for x in range(len(S))]for z in range(len(words))]
+        for j in range(len(words)):
+            for z in range(len(S)):
+                if words[j] in S[z]:
+                    ole[j][z] = 1
+        eleos = [[0 for x in range(len(S))]for z in range(k)]
+        for i in range(k):
+            suf = range(len(words))
+            shuffle(suf)
+            for j in range(len(S)):
+                for z in range(len(suf)):
+                    if ole[suf[z]][j] == 1:
+                        eleos[i][j] = z
+                        break
+    return [words, np.array(eleos)]","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,9,40,25,peeth
+Assignment 1: LSH,2,Student_108,2014-03-01 19:05:17.779868,"import numpy as np
+import re
+import random
+
+def minhash(l, k):
+    words=set()
+    
+    for wordset in l:
+            words.update(wordset)
+
+
+    convert = lambda text: int(text) if text.isdigit() else text 
+    alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ]
+    words = sorted(words, key = alphanum_key)
+
+    
+    hashes=[]
+     
+    ss = np.zeros(shape=(len(words),len(l)))
+    np.random.shuffle(ss)    
+
+    for i in range(len(words)):
+        for j in range(len(l)):
+            if words[i] in l[j]:
+                ss[i][j] =1
+
+    for i in range(k):
+        hashes.append(np.random.permutation(np.arange(len(words))))
+    
+   
+    output = np.zeros(shape=(k,len(l)))
+   
+    counter=0
+    for i in range(k):
+        for j in range(len(l)):
+            for z in range(len(ss)):
+                if ss[hashes[i][z]][j]==0:
+                    counter+=1
+                else:
+                    output[i][j]=counter
+                    counter=0
+                    break
+    return (words,output) 
+
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,34,40,25,pavlos
+Assignment 1: LSH,2,Student_109,2014-03-09 19:34:59.212017,"import scipy
+import numpy
+import sets
+import random
+import math
+
+def minhash(S, k):
+    fullset = sets.Set();
+    singlesets = []
+    for s in S:
+        singlesets.append(sets.ImmutableSet(s))
+        fullset.update(s)
+    
+    perm = list(fullset)
+    result = numpy.empty((k, len(S)), dtype=int)
+    
+    for curk in range(k):
+        random.shuffle(perm)
+        for i in range(len(S)):
+            j = 0
+            while (j < len(perm)) and (perm[j] not in singlesets[i]):
+                j += 1
+            result[curk, i] = j
+    
+    return sorted(fullset), result","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,1,40,25,Pepijn
+Assignment 1: LSH,2,Student_110,2014-03-10 19:47:09.004955,"import random
+import numpy as np
+
+def minhash(S, k):
+    num_docs = len(S)
+    
+    #Fill Words with all words in the documents
+    Words = set()
+    for i in range(num_docs):
+        Words = Words | S[i]
+    Words = list(Words)
+    
+    Signatures = []
+    perm = range(len(Words))
+    for i in range(k):
+        random.shuffle(perm)
+        sig = []
+        for j in range(num_docs):
+            count = 0
+            for k in range(len(Words)):
+                if Words[perm[k]] in S[j]:
+                    sig.append(count)
+                    break
+                else:
+                    count = count + 1
+        
+        Signatures.append(list(sig))
+    return Words, np.array(Signatures)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,7,40,25,Ruud
+Assignment 1: LSH,2,Student_111,2014-03-10 23:19:44.672215,"from numpy import *
+def minhash(S,k):
+    print(S)
+    sizeS=len(S)
+    words=set(S[0])
+    
+    for i in range(1,sizeS):
+        words=words|set(S[i])
+    words=list(words)
+    
+    
+    array01=zeros(sizeS*len(words)).reshape(len(words),sizeS)
+    S=list(S)
+    for i in range(0,len(words)):
+        for j in range(0,sizeS):
+            currow=S[j]
+            
+            if(words[i] in currow):
+                array01[i][j]=1
+    
+    
+    #retarray=zeros(len(words)*k).reshape(k,len(S))
+    retarray=[[None]*sizeS] *k
+    retarray=matrix(retarray)
+    for i in range(0,k):
+        #print(k)
+        perm=random.permutation(range(0,len(words)))
+        
+        for j in range(0,sizeS):
+            
+            for l in range(0,len(words)):
+                if(array01[perm[l],j]==1):
+                    retarray[i,j]=l
+                
+                
+    return (words,retarray)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,3,40,25,Sander
+Assignment 1: LSH,2,Student_112,2014-03-07 19:54:36.104194,"from random import shuffle
+import numpy
+def minhash(S, k):
+    Words = set(S[0])
+    for i in range(len(S)-1):
+        Words = set.union(set(S[i+1]), Words)
+    Words = list(Words)
+    Signatures = [[0 for x in range(len(S))] for x in range(k)]
+    for i in range(k):
+        ran = range(len(Words))
+        shuffle(ran)
+        for j in range(len(S)):
+            for z in range(len(ran)):
+                if Words[ran[z]] in S[j]:
+                    Signatures[i][j] = z+1
+                    break
+    return [Words, numpy.array(Signatures)]
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,16,40,25,Thodoris
+Assignment 1: LSH,2,Student_113,2014-03-07 21:44:07.157767,"import numpy as np
+
+def minhash(S,k):
+    #check for empty Set / empty list
+    words = S[0]
+    for list in S:
+        words = words.union(list)
+    words = sorted(words)    
+    mat = np.zeros((k,len(S)))
+    indexes = np.arange(len(words))
+    
+    for index in range(k):
+        np.random.shuffle(indexes)
+        
+        doc = 0
+        for list in S:
+            if len(list) == 0:
+                mat[index,doc] = len(words) + 1
+            else:
+                i = 0
+                while not (words[indexes[i]] in list): 
+                    i += 1
+                mat[index,doc] = i + 1
+            doc += 1
+    
+    return words, mat","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testApproximate <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSanity <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:25 out of 25 is 100%",100,2,40,25,Justin Time
+Assignment 1: LSH,3,Student_101,2014-03-10 18:12:15.722196,"import numpy as np
+
+def cossim(s1, s2):
+    temp = np.dot(s1, s2) / np.linalg.norm(s1) / np.linalg.norm(s2)
+    return 1 - np.arccos(temp) / np.pi","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Ed Balls
+Assignment 1: LSH,3,Student_103,2014-03-07 20:58:48.503028,"import numpy as np
+import math
+from itertools import izip
+
+def cossim(s1, s2):
+    v1 = np.array(s1)
+    v2 = np.array(s2)
+    prod = np.dot(v1, v2)
+    len1 = math.sqrt(np.dot(v1, v1))
+    len2 = math.sqrt(np.dot(v2, v2))
+    return 1- (math.degrees(math.acos(prod / (len1 * len2))/180))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,8,40,50,ctrl+alt+delete
+Assignment 1: LSH,3,Student_104,2014-03-10 20:08:14.365434,"from numpy import *
+
+def cossim(s1,s2):
+    s1=list(s1)
+    s2=list(s2)
+    s1=array(s1)
+    s2=array(s2)
+    dotprod=dot(s1,s2)
+    
+    
+    print(s1.dot(s1))
+    cosinesim=dotprod/(sqrt(dot(s1,s1))*sqrt(dot(s2,s2)))
+
+    return 1-(arccos(cosinesim)/pi)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,4,40,50,JTL
+Assignment 1: LSH,3,Student_105,2014-03-08 08:48:44.010044,"from scipy import spatial
+from numpy import dot
+from math import sqrt, acos, pi
+
+
+def cossim(s1, s2):
+	return  1 - acos(dot(s1, s2) / (sqrt(dot(s1, s1)) * sqrt(dot(s2, s2)))) / pi","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Michiel
+Assignment 1: LSH,3,Student_106,2014-03-07 08:59:16.658982,"import scipy
+import numpy
+import sets
+import random
+import math
+
+def angle(s1, s2):
+    return numpy.arccos(numpy.dot(s1, s2) / (numpy.linalg.norm(s1) * numpy.linalg.norm(s2)))
+
+def cossim(s1, s2):
+    if len(s1) != len(s2):
+        return None
+    return 1 - (angle(s1, s2) / math.pi)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,4,40,50,Mathijs
+Assignment 1: LSH,3,Student_107,2014-03-07 21:03:46.34451,"from __future__ import division
+import numpy as np
+import math
+
+def cossim(s1, s2):
+    d = np.dot(s1, s2)
+    r1 = math.sqrt(np.dot(s1,s1))
+    r2 = math.sqrt(np.dot(s2,s2))
+    Dist = d/(r1*r2)
+    theta = math.degrees(np.arccos(Dist))
+    return 1-theta/180","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,14,40,50,peeth
+Assignment 1: LSH,3,Student_108,2014-03-07 10:24:45.940169,"import numpy as np
+import scipy
+import math
+
+def cossim(s1,s2):
+    ns1= np.linalg.norm(s1)
+    ns2 =np.linalg.norm(s2)
+    us1 = s1/ns1
+    us2 = s2/ns2
+    cosine = np.dot(us1,us2)
+
+    
+    if  cosine!=1:
+        
+        angle = np.arccos(cosine)
+
+    else:
+        angle = 0
+
+    similarity = 1 - (angle/np.pi)
+    
+    return similarity","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,8,40,50,pavlos
+Assignment 1: LSH,3,Student_109,2014-03-09 19:35:23.326801,"import scipy
+import numpy
+import sets
+import random
+import math
+
+def angle(s1, s2):
+    return numpy.arccos(numpy.dot(s1, s2) / (numpy.linalg.norm(s1) * numpy.linalg.norm(s2)))
+
+def cossim(s1, s2):
+    return 1 - (angle(s1, s2) / math.pi)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Pepijn
+Assignment 1: LSH,3,Student_110,2014-03-07 10:27:12.40632,"import numpy as np
+
+def cossim(s1, s2):
+    temp = np.dot(s1, s2) / np.linalg.norm(s1) / np.linalg.norm(s2)
+    return 1 - np.arccos(temp) / np.pi","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,5,40,50,Ruud
+Assignment 1: LSH,3,Student_114,2014-03-09 18:33:11.662163,"def cossim(s1, s2):
+   val = numpy.dot(s1,s2)/(numpy.linalg.norm(s1))*(numpy.linalg.norm(s2))
+   similarity = 1 - numpy.arccos(val)/numpy.pi
+   return similarity","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/exception.png"" alt=exception> testBig <a href='#' onclick=""showDialog('\nThis test takes 2 vectors with 10^6 random numbers, drawn from a normal distribution between 10 and 12.\n        If your solution does not use numpy arrays, the numpy dot function and the numpy linalg module it will\n        probably fail to produce a number in 2.5 seconds.\n\nTraceback (most recent call last):\n  File &quot;<string>&quot;, line 18, in runTestJIYVNDLEQNVD\n  File &quot;<string>&quot;, line 58, in testBig\n  File &quot;<string>&quot;, line 2, in cossim\nNameError: global name &lsquo;numpy&lsquo; is not defined\n');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/exception.png"" alt=exception> testSmall <a href='#' onclick=""showDialog('\nSomething is wrong with even a small number of dimentions: cossim([0,0,1,1,1,0],[0,1,1,1,0,0]) should be 0,732(rep).\n\nTraceback (most recent call last):\n  File &quot;<string>&quot;, line 18, in runTestJIYVNDLEQNVD\n  File &quot;<string>&quot;, line 47, in testSmall\n  File &quot;<string>&quot;, line 2, in cossim\nNameError: global name &lsquo;numpy&lsquo; is not defined\n');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 50 is 20%",20,3,40,50,Student14
+Assignment 1: LSH,3,Student_111,2014-03-10 23:20:04.282295,"from numpy import *
+
+def cossim(s1,s2):
+    s1=list(s1)
+    s2=list(s2)
+
+    s1=array(s1)
+    s2=array(s2)
+    dotprod=dot(s1,s2)
+    
+    
+    cosinesim=dotprod/(sqrt(dot(s1,s1))*sqrt(dot(s2,s2)))
+
+    return 1-(arccos(cosinesim)/pi)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Sander
+Assignment 1: LSH,3,Student_112,2014-03-07 20:58:37.075329,"from __future__ import division
+import math
+import numpy
+def cossim(s1, s2):
+    c = numpy.dot(s1, s2)/(math.sqrt(numpy.dot(s1, s1))*math.sqrt(numpy.dot(s2,s2)))
+    return 1-math.degrees(numpy.arccos(c))/180","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,4,40,50,Thodoris
+Assignment 1: LSH,3,Student_113,2014-03-07 22:00:22.422739,"import numpy as np
+import math
+
+def cossim(v1,v2):
+    v1 = np.array(v1)
+    v2 = np.array(v2)
+    product = np.dot(v1, v2)
+    angle =  np.arccos( product  / (np.linalg.norm(v1) * np.linalg.norm(v2)))
+    return 1 - (angle / np.pi)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBig <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSmall <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,3,40,50,Justin Time
+Assignment 1: LSH,4,Student_101,2014-03-10 17:35:46.227876,"import numpy as np
+
+def sketch(M, k):
+    d1 = len(M)
+    d2 = len(M[0])
+    sketches = np.zeros((k, d2))
+    A = np.random.randn(k, d1)
+    
+    for i in range(k):
+        for j in range(d2):
+            sketches[i][j] = (np.dot(A[i], M[:,j]) > 0) * 2 - 1
+            
+    return sketches","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,4,0,50,Ed Balls
+Assignment 1: LSH,4,Student_103,2014-03-10 17:01:58.563492,"import numpy as np
+def sketch(M,K):
+    v = []
+    M = np.array(M).transpose()
+    for i in xrange(K): 
+        v.append(np.random.randn(len(M[0])))
+    Sketches = np.array([[0.0 for i in range(len(M))] for j in range(K)])
+    for i in xrange(len(M)):
+        for j in xrange(K):
+            Sketches[j][i]= 1 if np.dot(M[i], v[j]) >= 0 else -1
+    return np.array(Sketches)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,49,0,50,ctrl+alt+delete
+Assignment 1: LSH,4,Student_104,2014-03-11 14:38:12.278647,"from numpy import *
+def sketch(M,k):
+    sizeM=len(M)
+    nrs=len(M[0])
+    
+    
+    ks=random.randn(k,sizeM)
+    M=array(M)
+    
+    sketches=zeros((k,nrs))
+    
+    
+
+    for i in range(0,nrs):
+        for j in range(0,k):
+            if(dot(ks[j],M[:, i])<0):
+                sketches[j][i]=-1
+    
+            else:
+                sketches[j][i]=1
+    
+    
+    return sketches
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,15,0,50,JTL
+Assignment 1: LSH,4,Student_105,2014-03-08 21:13:16.574462,"from numpy import zeros, random, dot, array
+
+def sketch(M, k):
+	rd = random.randn(k, len(M))
+	sketches = zeros((k, len(M[0])))
+	for i in range(k):
+		for j in range(len(M[0])):
+			v = dot(rd[i], M[:, j])
+			if v > 0:
+				sketches[i][j] = 1
+			elif v < 0:
+				sketches[i][j] = -1
+			else:
+				if random.random() >= 0.5:
+					sketches[i][j] = 1
+				else:
+					sketches[i][j] = -1
+	return sketches
+
+sketch(array([[1.0, 2.0, 3.0], [1.0, 2.0, 3.0]]), 2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,13,0,50,Michiel
+Assignment 1: LSH,4,Student_106,2014-03-07 09:01:26.638669,"import scipy
+import numpy
+import sets
+import random
+import math
+
+def sketch(M, k):
+    d, n = M.shape
+    directions = numpy.random.normal(size=(d, k))
+    sketches = numpy.empty((k, n))
+    for i in xrange(0, k):
+        for j in xrange(0, n):
+            sketches[i,j] = 1 if numpy.dot(M[:, j], directions[:, i]) > 0 else -1
+    return sketches","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,4,0,50,Mathijs
+Assignment 1: LSH,4,Student_107,2014-03-10 16:58:31.010624,"import numpy as np
+
+def sketch(M, k):
+    M = np.array(M).transpose()
+    randoms = [0]*k
+    sketches = np.zeros((k,len(M)))
+    skata = [0]*k
+    for i in range(k):
+        randoms[i] = np.random.randn(len(M[0]))
+    for i in range(len(M)):
+        for j in range(k):
+            skata[j] = np.dot(M[i], randoms[j])
+            if skata[j] < 0:
+                sketches[j][i] = -1
+            else:
+                sketches[j][i] = 1
+    sketches = np.array(sketches)
+    return sketches","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,22,0,50,peeth
+Assignment 1: LSH,4,Student_108,2014-03-07 08:57:02.320166,"import numpy as np
+
+def sketch(M,k):
+
+    M = M.T
+    output = np.zeros(shape = (M.shape[0], k))
+    a = np.random.uniform(-1,1, size=(k, M.shape[1]))
+
+    
+    for i in range(M.shape[0]):
+        for j in range(k):
+            AAA = np.dot(M[i],a[j])
+            if AAA<0:
+                AAA=-1
+            elif AAA>0:
+                AAA=1
+            output[i][j] = AAA
+        
+             
+
+    return output.T","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,2,0,50,pavlos
+Assignment 1: LSH,4,Student_109,2014-03-09 19:35:34.353427,"import scipy
+import numpy
+import sets
+import random
+import math
+
+def sketch(M, k):
+    d, n = M.shape
+    directions = numpy.random.normal(size=(d, k))
+    sketches = numpy.empty((k, n))
+    for i in xrange(0, k):
+        for j in xrange(0, n):
+            sketches[i,j] = 1 if numpy.dot(M[:, j], directions[:, i]) > 0 else -1
+    return sketches","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,0,50,Pepijn
+Assignment 1: LSH,4,Student_110,2014-03-10 17:29:10.632124,"import numpy as np
+def sketch(M, k):
+    d1 = len(M)
+    d2 = len(M[0])
+    sketches = np.zeros((k, d2))
+    A = np.random.randn(k, d1)
+    
+    for i in range(k):
+        for j in range(d2):
+            sketches[i][j] = (np.dot(A[i], M[:,j]) > 0) * 2 - 1
+            
+    return sketches","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,0,50,Ruud
+Assignment 1: LSH,4,Student_111,2014-03-10 23:45:06.566148,"from numpy import *
+def sketch(M,k):
+    sizeM=len(M)
+    nrs=len(M[0])
+    
+    
+    ks=random.randn(k,nrs)
+    
+    
+    sketches=[[None]*k] *sizeM
+    sketches=array(sketches)
+    
+
+    for i in range(0,sizeM):
+        for j in range(0,k):
+            if(dot(ks[j],M[i])<0):
+                sketches[i,j]=-1
+    
+            else:
+                sketches[i,j]=1
+    
+    
+    return sketches
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testExample <a href='#' onclick=""showDialog('\nThe vectors [1,-3,-2,3] and [3,-1,1,-3] are being skeched from 10.000 angles.\n        Then we check if angle approximates the true angle between these vectors.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 50 is 20%",20,1,0,50,Sander
+Assignment 1: LSH,4,Student_112,2014-03-10 16:51:41.598336,"import numpy
+def sketch(M, k):
+    M = numpy.array(M).transpose()
+    hyp =[]
+    for i in range(k):
+        hyp.append([x for x in numpy.random.randn(len(M[0]))])
+    Sketches = numpy.zeros((k,len(M)))
+    for i in range(len(M)):
+        for j in range(k):
+            Sketches[j][i] = numpy.dot(M[i], hyp[j])
+            if Sketches[j][i]>0:
+                Sketches[j][i] = 1
+            else:
+                Sketches[j][i] = -1
+    return numpy.array(Sketches)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,72,0,50,Thodoris
+Assignment 1: LSH,4,Student_113,2014-03-07 22:01:12.872232,"import numpy as np
+
+def sketch(M, k):
+    numrows = len(M)
+    numcols = len(M[0])
+    dirs = np.random.randn(len(M),k)
+    result=np.array([])
+    for i in range(k):
+        result = np.concatenate((result, np.sign(np.sum(np.transpose(np.tile (dirs[:,i],(numcols,1))) * M, axis=0))))
+    return np.reshape(result,(k,numcols))
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,2,0,50,Justin Time
+Assignment 1: LSH,5,Student_101,2014-03-10 18:07:50.750645,"import numpy as np
+
+def sigsim(ss1, ss2):
+    return np.sum(ss1 == ss2) / float(len(ss1))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,15,40,50,Ed Balls
+Assignment 1: LSH,5,Student_103,2014-03-10 16:02:31.262387,"from __future__ import division
+import numpy as np
+import math
+
+def sigsim(ss1, ss2):
+    ss1 = np.array(ss1)
+    ss2 = np.array(ss2)
+    return sum(ss1==ss2)/len(ss1)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,11,40,50,ctrl+alt+delete
+Assignment 1: LSH,5,Student_104,2014-03-10 20:19:25.358689,"#===============================================================================
+# Task 5: Implement a function sigsim(ss1, ss2) which calculates the similarity of signatures ss1 and ss2.
+# Note that it doesn't matter if the signatures consist of integers (as in the case of minhashing) or of -1's
+# and +1's (as in the case of sketches) - the procedure is the same.
+#===============================================================================
+
+def sigsim(ss1,ss2):
+    similar=0
+    for i in range(0,len(ss1)):
+        if(ss1[i] == ss2[i]):
+            similar+=1
+    
+    return float(similar)/float(len(ss1))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,JTL
+Assignment 1: LSH,5,Student_105,2014-03-09 17:05:43.325939,"from numpy import zeros, random
+
+def minhash(S, k):
+	Words = list(set().union(*S)) # Figure 3.2 first column
+	Characteristics = zeros(shape=(len(Words), len(S))) # Figure 3.2 bit matrix
+	Signatures = zeros(shape=(k, len(S)))
+
+	for i, w in enumerate(Words):
+		for j in range(len(S)):
+			if w in S[j]:
+				Characteristics[i][j] = 1
+	#print Characteristics
+
+
+	for h in range(k):
+		rp = random.permutation(len(Words))
+		for j in range(len(S)):
+			w = 0
+			while Characteristics[rp[w]][j] != 1:
+				w += 1
+			Signatures[h][j] = w
+
+	#print Signatures
+	#print Words
+	return Words, Signatures
+
+def sigsim(ss1, ss2):
+	k = 100000
+	w, signatures = minhash([ss1, ss2], k)
+	match = 0
+	nomatch = 0
+	for i in range(k):
+		if signatures[i][0] == signatures[i][1]:
+			match += 1
+		else:
+			nomatch += 1
+
+	#return round(match / float(match + nomatch), 0)
+	return match / float(match + nomatch)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testThree <a href='#' onclick=""showDialog('\nNo suggestion');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 50 is 60%",60,11,40,50,Michiel
+Assignment 1: LSH,5,Student_106,2014-03-08 08:36:28.416251,"import scipy
+import numpy
+import sets
+import random
+import math
+
+def sigsim(ss1, ss2):
+    matches = 0
+    length = len(ss1)
+    for i in xrange(0, length):
+        if ss1[i] == ss2[i]:
+            matches += 1
+    return float(matches) / float(length)
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Mathijs
+Assignment 1: LSH,5,Student_107,2014-03-10 16:04:14.61265,"from __future__ import division
+import numpy as np
+import math
+
+def sigsim(ss1,ss2):
+    ss1 = np.array(ss1)
+    ss2 = np.array(ss2)
+    return sum(ss1==ss2)/len(ss1)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,9,40,50,peeth
+Assignment 1: LSH,5,Student_108,2014-03-07 10:37:15.746607,"import numpy as np
+
+
+def sigsim(ss1,ss2):
+
+    similar=0
+    zeroes =0
+    for i in range(len(ss1)):
+        ##print ss1[i],ss2[i]
+        #print (ss1[i]  ==0 and ss2[i] ==0)
+        #print (ss1[i] == ss2[i] and ss1[i] is not 0 and ss2[i] is not 0)
+        if ss1[i] == ss2[i]:
+            similar+=1
+        #elif ss1[i]  ==0 and ss2[i] ==0:
+            #zeroes+=1
+    #print zeroes
+    similarity = similar/float(len(ss1))
+    return similarity
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,pavlos
+Assignment 1: LSH,5,Student_109,2014-03-09 19:36:02.470098,"import scipy
+import numpy
+import sets
+import random
+import math
+
+def sigsim(ss1, ss2):
+    matches = 0
+    length = len(ss1)
+    for i in xrange(0, length):
+        if ss1[i] == ss2[i]:
+            matches += 1
+    return float(matches) / float(length)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Pepijn
+Assignment 1: LSH,5,Student_110,2014-03-10 18:05:58.640826,"import numpy as np
+
+def sigsim(ss1, ss2):
+    return np.sum(ss1 == ss2) / float(len(ss1))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,3,40,50,Ruud
+Assignment 1: LSH,5,Student_111,2014-03-10 23:30:41.880446,"def sigsim(ss1,ss2):
+    similar=0
+    for i in range(0,len(ss1)):
+        if(ss1[i] == ss2[i]):
+            similar+=1
+    
+    return float(similar)/float(len(ss1))
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Sander
+Assignment 1: LSH,5,Student_112,2014-03-10 16:05:37.65564,"from __future__ import division
+import numpy
+def sigsim(ss1, ss2):
+    s1 = numpy.array(ss1)
+    s2 = numpy.array(ss2)
+    return sum(s1==s2)/len(s1)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,1,40,50,Thodoris
+Assignment 1: LSH,5,Student_113,2014-03-07 22:02:26.094939,"import numpy as np
+
+def sigsim(ss1,ss2):
+    A = np.array(ss1)           
+    B = np.array(ss2)
+    return float(sum(A == B)) / len(A)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testThree <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:50 out of 50 is 100%",100,4,40,50,Justin Time
+Assignment 2: (1-2-3) Bloom filter,1,Student_101,2014-04-02 00:02:12.542132,"import numpy as np
+from scipy.stats import binom
+
+def fp(N, n, k):
+    if (k > 0):
+        rv = binom(k * N, 1/float(n))
+        empty = rv.pmf(0)
+        return pow((1 - empty), k)
+    else:
+        return 1
+    ","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,1,40,30,Ed Balls
+Assignment 2: (1-2-3) Bloom filter,1,Student_102,2014-03-27 15:52:02.385333,"import numpy;
+
+def fp(N, n, k):
+    N = float(N)
+    n = float(n)
+    if(k == 0):
+        return 1
+    return numpy.power(1- numpy.power(numpy.e,(-N/(n/k))),k)
+    ","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,13,40,30,Student16
+Assignment 2: (1-2-3) Bloom filter,1,Student_103,2014-03-26 15:06:52.96632,"def fp(n,N,k):
+    chance_zero = (float(N-1)/N)**(k*n)
+    chance_one = 1-chance_zero
+    return chance_one**k","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,12,40,30,ctrl+alt+delete
+Assignment 2: (1-2-3) Bloom filter,1,Student_104,2014-03-27 15:31:14.134901,"from __future__ import division
+from numpy import *
+def fp(N,n,k):
+    if(k==0):
+        return 1
+    return (1-exp((-1*k*N)/n))**k","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,8,40,30,JTL
+Assignment 2: (1-2-3) Bloom filter,1,Student_105,2014-03-28 08:16:31.270029,"from math import e, pow
+def fp(N, n, k):
+    return pow(1 - pow(e, -float(k) * float(N) / float(n)), float(k))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,9,40,30,Michiel
+Assignment 2: (1-2-3) Bloom filter,1,Student_106,2014-03-25 11:53:54.283043,"import math
+def fp(n, m, k):
+    return (1-(1-1.0/m)**(k*n))**k","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,2,40,30,Mathijs
+Assignment 2: (1-2-3) Bloom filter,1,Student_107,2014-03-26 15:04:47.998443,"from __future__ import division
+from math import exp
+
+def fp(n, N, k):
+    return (1-((N-1)/N)**(k*n))**k","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,2,40,30,peeth
+Assignment 2: (1-2-3) Bloom filter,1,Student_108,2014-03-24 16:54:07.438572,"from __future__ import division
+
+def fp(N,n,k):
+    
+    nerr = ((n-1)/n)**(k*N)
+    return (1 - nerr)**k
+    
+
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,4,40,30,pavlos
+Assignment 2: (1-2-3) Bloom filter,1,Student_109,2014-03-30 21:38:21.320979,"import math
+
+def fp(n, m, k):
+    return (1-(1-1.0/m)**(k*n))**k
+    ","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,3,40,30,Pepijn
+Assignment 2: (1-2-3) Bloom filter,1,Student_110,2014-03-30 15:25:19.288166,"import numpy as np
+from scipy.stats import binom
+
+def fp(N, n, k):
+    if (k > 0):
+        rv = binom(k * N, 1/float(n))
+        empty = rv.pmf(0)
+        return pow((1 - empty), k)
+    else:
+        return 1","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,6,40,30,Ruud
+Assignment 2: (1-2-3) Bloom filter,1,Student_111,2014-03-31 23:00:50.996833,"from __future__ import division
+from numpy import *
+def fp(N,n,k):
+    if(k==0):
+        return 1
+    return (1-exp((-1*k*N)/n))**k
+
+print(fp(1,4,1))","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,1,40,30,Sander
+Assignment 2: (1-2-3) Bloom filter,1,Student_112,2014-03-26 16:04:44.504292,"def fp(N, n, k):
+    return (1 - (1 - 1.0/n)**(N*k))**k","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,20,40,30,Thodoris
+Assignment 2: (1-2-3) Bloom filter,1,Student_113,2014-03-24 16:06:46.487837,"def fp(N, n, k):
+    return (1- ((float(n-1) / n) ** (N*k))) ** k","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookOne <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testBookTwo <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testZeroHash <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 30 is 100%",100,2,40,30,Justin Time
+Assignment 2: (1-2-3) Bloom filter,2,Student_101,2014-04-02 00:02:43.304349,"import numpy as np
+from scipy.stats import binom
+
+def fp(N, n, k):
+    if (k > 0):
+        rv = binom(k * N, 1/float(n))
+        empty = rv.pmf(0)
+        return pow((1 - empty), k)
+    else:
+        return 1
+
+def fp2(N, n1, k1, n2, k2):
+    return fp(N, n1, k1) * fp(N, n2, k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,1,40,40,Ed Balls
+Assignment 2: (1-2-3) Bloom filter,2,Student_102,2014-03-27 15:53:58.624292,"import numpy
+def fp(N, n, k):
+    N = float(N)
+    n = float(n)
+    if(k == 0):
+        return 1
+    if(n == 1):
+        return 1
+    return numpy.power(1- numpy.power(numpy.e,(-N/(n/k))),k)
+
+def fp2(N, n1, k1, n2, k2):
+    return fp(N,n1,k1) * fp(N,n2,k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testHalfAQuart <a href='#' onclick=""showDialog('\n1/4 th of 1/2 is 1/8.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:30 out of 40 is 75%",75,4,40,40,Student16
+Assignment 2: (1-2-3) Bloom filter,2,Student_103,2014-03-26 15:38:05.679091,"def fp(N, n, k):
+    chance_zero = (float(N-1)/N)**(k*n)
+    chance_one = 1-chance_zero
+    return chance_one**k
+
+def fp2(N, n1, k1, n2, k2):
+    return fp(n1, N, k1) * fp(n2, N, k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,11,40,40,ctrl+alt+delete
+Assignment 2: (1-2-3) Bloom filter,2,Student_104,2014-03-28 11:21:39.346589,"from __future__ import division
+from numpy import *
+
+def fp2(N, n1, k1, n2, k2):
+    if (n1==1 or n2==1):
+        return float(1)
+    if k1 == 0:
+        bloom1 = 1
+    else:
+        bloom1 = (1-(((n1-1)/n1))**(N*k1) )**k1
+    if k2 == 0:
+        bloom2 = 1
+    else:
+        bloom2 = (1-(((n2-1)/n2))**(N*k2) )**k2
+
+
+    return bloom1*bloom2","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,21,40,40,JTL
+Assignment 2: (1-2-3) Bloom filter,2,Student_105,2014-03-28 10:17:52.874216,"from math import e, pow
+def fp(N, n, k):
+    return pow(1 - pow(e, -float(k) * float(N) / float(n)), float(k))
+
+def fp2(N, n1, k1, n2, k2):
+    return fp(N, n1, k1) * fp(N, n2, k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testHalfAQuart <a href='#' onclick=""showDialog('\n1/4 th of 1/2 is 1/8.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/failed.png"" alt=failed> testSingleBuckets <a href='#' onclick=""showDialog('\nThe number of hash functions should have no influence when there is only 1 bucket. \n        If there is only 1 bucket, all positives and false positives fall into the same bucket.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:20 out of 40 is 50%",50,1,40,40,Michiel
+Assignment 2: (1-2-3) Bloom filter,2,Student_106,2014-03-25 11:53:26.907029,"import math
+
+def fp(n, m, k):
+    return (1-(1-1.0/m)**(k*n))**k
+
+def fp2(N, n1, k1, n2, k2):
+    return fp(N, n1, k1)*fp(N, n2, k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,5,40,40,Mathijs
+Assignment 2: (1-2-3) Bloom filter,2,Student_107,2014-03-26 15:36:23.288226,"from __future__ import division
+from math import exp
+
+def fp2(N, n1, k1, n2, k2):
+    return fp(N, n1, k1) * fp(N, n2, k2)
+
+
+def fp(n, N, k):
+    return (1-((N-1)/N)**(k*n))**k","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,3,40,40,peeth
+Assignment 2: (1-2-3) Bloom filter,2,Student_108,2014-03-24 16:53:37.456495,"from __future__ import division
+
+
+def fp2(N,n1,k1,n2,k2):
+    nerr1 = ((n1-1)/n1)**(k1*N)
+    nerr2 = ((n2-1)/n2)**(k2*N)
+    
+    
+    return ((1 - nerr1)**k1)*((1 - nerr2)**k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,4,40,40,pavlos
+Assignment 2: (1-2-3) Bloom filter,2,Student_109,2014-03-30 21:38:38.718269,"import math
+
+def fp(n, m, k):
+    return (1-(1-1.0/m)**(k*n))**k
+
+def fp2(N, n1, k1, n2, k2):
+    return fp(N, n1, k1)*fp(N, n2, k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,4,40,40,Pepijn
+Assignment 2: (1-2-3) Bloom filter,2,Student_110,2014-03-30 15:25:29.710259,"import numpy as np
+from scipy.stats import binom
+
+def fp(N, n, k):
+    if (k > 0):
+        rv = binom(k * N, 1/float(n))
+        empty = rv.pmf(0)
+        return pow((1 - empty), k)
+    else:
+        return 1
+
+def fp2(N, n1, k1, n2, k2):
+    return fp(N, n1, k1) * fp(N, n2, k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,5,40,40,Ruud
+Assignment 2: (1-2-3) Bloom filter,2,Student_111,2014-03-31 23:03:02.904001,"from __future__ import division
+from numpy import *
+
+def fp(N,n,k):
+    if(k==0):
+        return 1
+    return (1-exp((-1*k*N)/n))**k
+
+def fp2(N, n1, k1, n2, k2):
+    if (n1==1 or n2==1):
+        return float(1)
+    if k1 == 0:
+        bloom1 = 1
+    else:
+        bloom1 = (1-(((n1-1)/n1))**(N*k1) )**k1
+    if k2 == 0:
+        bloom2 = 1
+    else:
+        bloom2 = (1-(((n2-1)/n2))**(N*k2) )**k2
+
+
+    return bloom1*bloom2
+
+def fp3(N, n1, k1, n2, k2):
+    return (1-exp((-1*k1*k2*N*N)/(n1*n2)))**(k1*k2)
+
+
+
+print(fp2(1,4,1,2,1))
+
+print(fp(1*10**8,4*10**8,2)*fp(1*10**8,8*10**8,2))
+
+print(fp2(1*10**8,4*10**8,2,8*10**8,2))
+print(fp3(1*10**8,4*10**8,2,8*10**8,2))
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,1,40,40,Sander
+Assignment 2: (1-2-3) Bloom filter,2,Student_112,2014-03-26 16:07:32.18685,"def fp(N, n, k):
+    return (1 - (1 - 1.0/n)**(N*k))**k
+
+def fp2(N, n1, k1, n2, k2):
+    return fp(N, n1, k1)*fp(N, n2, k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,1,40,40,Thodoris
+Assignment 2: (1-2-3) Bloom filter,2,Student_113,2014-03-24 16:42:14.553694,"def fp(N, n, k):
+    return (1- ((float(n-1) / n) ** (N*k))) ** k
+
+def fp2(N, n1, k1, n2, k2):
+    A = fp(N,n1,k1) 
+    return A * fp(N,n2,k2)","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testDubbel8B <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testHalfAQuart <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testSingleBuckets <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:40 out of 40 is 100%",100,5,40,40,Justin Time
+Assignment 2: (1-2-3) Bloom filter,3,Student_101,2014-04-02 00:01:14.849278,"def fp3(N, *args, **kwargs):
+    pass","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,1,40,10,Ed Balls
+Assignment 2: (1-2-3) Bloom filter,3,Student_103,2014-03-26 15:39:27.882669,"def fp3(N, *args, **kwargs):
+    pass","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,1,40,10,ctrl+alt+delete
+Assignment 2: (1-2-3) Bloom filter,3,Student_104,2014-03-30 14:12:24.171407,"def fp3(N, *args, **kwargs):
+
+
+
+    if kwargs.items() != []:
+        return (1-(((kwargs.get('n1')-1)/kwargs.get('n1')))**(N*kwargs.get('k1')) )**kwargs.get('k1')
+
+    if(size(args)%2 !=0):
+        return
+
+    if args[0]== 0:
+        returnvalue =1
+    else:
+        returnvalue = (1-(((args[0]-1)/args[0]))**(N*args[1]))**args[1]
+
+    for i in range(1,size(args)//2):
+        if(args[i*2]==0):
+            continue
+        returnvalue = returnvalue * ((1-(((args[i*2]-1)/args[i*2]))**(N*args[i*2+1]) )**args[i*2+1])
+
+    return returnvalue","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,2,40,10,JTL
+Assignment 2: (1-2-3) Bloom filter,3,Student_105,2014-03-30 19:43:25.653179,"def fp3(N, *args, **kwargs):
+    pass","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,1,40,10,Michiel
+Assignment 2: (1-2-3) Bloom filter,3,Student_106,2014-03-28 08:31:18.758738,"import math
+
+def fp(n, m, k):
+    return (1-(1-1.0/m)**(k*n))**k
+
+def fp3(N, *args, **kwargs):
+    result = 1
+    if(len(args)!=0):
+        for i in range(0,len(args),2):
+            result *= fp(N, args[i], args[i+1])
+    elif(len(kwargs)!=0):
+        for i in range(1,len(kwargs)/2+1):
+            result *= fp(N, kwargs['n'+str(i)], kwargs['k'+str(i)])        
+    return result","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,4,40,10,Mathijs
+Assignment 2: (1-2-3) Bloom filter,3,Student_107,2014-03-26 15:39:50.207859,"def fp3(N, *args, **kwargs):
+    pass","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,1,40,10,peeth
+Assignment 2: (1-2-3) Bloom filter,3,Student_108,2014-03-24 21:37:16.460784,"from __future__ import division
+
+def fpx(N, argtups):
+    
+    chances = []
+    output = 1
+    
+    for tup in argtups:
+        if tup[0] and tup[1]:
+            nerrtup = ((tup[0]-1)/tup[0])**(tup[1]*N)
+            chances.append((1 - nerrtup)**tup[1])
+        
+    for chance in chances:
+        output *= chance
+    
+    return output","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,1,40,10,pavlos
+Assignment 2: (1-2-3) Bloom filter,3,Student_109,2014-03-30 21:38:47.093872,"def fp3(N, *args, **kwargs):
+    result = 1
+    if(len(args)!=0):
+        for i in range(0,len(args),2):
+            result *= fp(N, args[i], args[i+1])
+    elif(len(kwargs)!=0):
+        for i in range(1,len(kwargs)/2+1):
+            result *= fp(N, kwargs['n'+str(i)], kwargs['k'+str(i)])        
+    return result","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,3,40,10,Pepijn
+Assignment 2: (1-2-3) Bloom filter,3,Student_110,2014-03-30 15:30:08.873267,"def fp3(N, *args, **kwargs):
+    pass","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,1,40,10,Ruud
+Assignment 2: (1-2-3) Bloom filter,3,Student_111,2014-03-31 23:01:57.2779,"def fp3(N, *args, **kwargs):
+    pass","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,1,40,10,Sander
+Assignment 2: (1-2-3) Bloom filter,3,Student_112,2014-03-26 16:09:47.963977,"def fp3(N, *args, **kwargs):
+    pass","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/testless.png"" alt=testless> no test <a href='#' onclick=""showDialog('There are no results. are there no tests?');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:10 out of 10 is 100%",100,1,40,10,Thodoris
+Introduction to numpy,1,Student_105,2014-03-05 07:44:14.807522,"# import statement to reference numpy as np.
+import numpy as np
+
+def selectItem(items):
+    # select a random number between 0 and numitems - 1
+    index = np.random.randint(len(items))
+    # return the item with this index
+    return items[index]
+
+
+","<img height=""24"" width=""24"" src=""/static/setup.png"" alt=setup> setup <a href='#' onclick=""showDialog('The test environment has been setup.');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/succes.png"" alt=succes> testExample <a href='#' onclick=""showDialog('You passed the test');""> more info ...</a></BR><img height=""24"" width=""24"" src=""/static/score.png"" alt=""score""> Score:1 out of 1 is 100%",100,1,40,1,Michiel
