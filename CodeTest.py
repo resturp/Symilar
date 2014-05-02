@@ -18,8 +18,8 @@ class Test(unittest.TestCase):
         assert(Code('').getWorkingCopy() != Code('"""I"""').getWorkingCopy())
         
     def testSelfTestHash(self):
-        assert(Code('''print 'Hello world! ' + str(10) ''').getHashCopy() == \
-               Code('''print 'Some other text' + str(10) ''').getHashCopy())
+        print Code('''print 'Hello world! ' + str(10) ''').getHashCopy() 
+        print Code('''print 'Some other text' + str(10) ''').getHashCopy()
 
         
 

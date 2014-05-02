@@ -55,15 +55,12 @@ class Window(object):
 
     def __init__(self, guarantee=5, noise=1):
         self.pivot = 0
-        if noise > 0:
-            self.noise = noise
-        else:
-            self.WindowMustHavePositiveNoiseSize()      
-            
-        if guarantee >= self.noise:   
-            self.guarantee = guarantee
-        else:
-            self.WindowMustHavePositiveSize()
+        self.noise = noise
+        if self.noise <=0:
+            raise self.WindowMustHavePositiveNoiseSize()      
+        self.guarantee = guarantee
+        if guarantee < self.noise:   
+            raise self.WindowMustHavePositiveSize()
             
         self.windowsize = self.guarantee - self.noise + 1
         self.chunks = [['',0]] * self.windowsize
