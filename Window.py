@@ -20,38 +20,52 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import numpy as np
 
 class Window(object):
+    class WindowMustHavePositiveSize(Exception):
+        pass
+    class WindowMustHavePositiveNoiseSize(Exception):
+        pass
+    
 
     def addChunk(self,chunk, linenumber):            
         self.chunks[self.pivot] = [chunk, linenumber]    
         self.pivot = (self.pivot + 1) % self.windowsize
-        self.chunkcounter += 1
-        
+    
         if self.pivot == 0:
             self.initialized = True
 
-        if self.initialized and self.chunkcounter % self.noise == 0:
-            minchunk = 'g000'
-            maxline = 0
-            for achunk in self.chunks:
-                if achunk[0] < minchunk:
-                    minchunk = achunk[0]
-                    maxline = achunk[1]
-                else:
-                    if achunk[0] == minchunk:
-                        if achunk[1] > maxline:
-                            maxline = achunk[1]            
-            if [minchunk,maxline] != self.lastMin:
-                self.fingerPrint.append([minchunk,maxline])
-                self.lastMin = [minchunk,maxline]
+        if self.initialized:
+            if self.chunkcounter % self.noise == 0:
+                minchunk = 'g000'
+                maxline = 0
+                for achunk in self.chunks:
+                    if achunk[0] < minchunk:
+                        minchunk = achunk[0]
+                        maxline = achunk[1]
+                    else:
+                        if achunk[0] == minchunk:
+                            if achunk[1] > maxline:
+                                maxline = achunk[1]            
+                if [minchunk,maxline] != self.lastMin:
+                    self.fingerPrint.append([minchunk,maxline])
+                    self.lastMin = [minchunk,maxline]
+            self.chunkcounter += 1
+
 
     def __init__(self, guarantee=5, noise=1):
         self.pivot = 0
-        self.noise = noise
-        self.guarantee = guarantee
-        self.windowsize = guarantee - noise + 1
+        if noise > 0:
+            self.noise = noise
+        else:
+            self.WindowMustHavePositiveNoiseSize()      
+            
+        if guarantee >= self.noise:   
+            self.guarantee = guarantee
+        else:
+            self.WindowMustHavePositiveSize()
+            
+        self.windowsize = self.guarantee - self.noise + 1
         self.chunks = [['',0]] * self.windowsize
         self.lastMin = ['',0]
         self.fingerPrint = []
