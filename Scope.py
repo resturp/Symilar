@@ -25,6 +25,7 @@ import translator
 
 class Scope(object):
     scopes = []
+    methods = {}
     current = None
     classInit = True
         
@@ -37,6 +38,7 @@ class Scope(object):
         self.translator = {}
         self.antiTranslator = {}
         self.constCount = 0
+        self.lastword = ''
     
     def getAllTranslators(self):
         if self.indent == -1:
@@ -56,7 +58,23 @@ class Scope(object):
             myTranslator = self.parent.getScopeTranslators()
             myTranslator.update(self.translator)
             return myTranslator
-        
+    
+    def getScopeByMethode(self, methodName):
+        if methodName in self.methods.keys():
+            return self.methods[methodName]
+        else:
+            try:
+                return self.parent.getScopeByMethode(methodName)
+            except:
+                return getCurrentScope()
+            
+    def collectAllScopes(self):
+        myList = [self,]
+        for scope in Scope.scopes:
+            if scope.parent == self:
+                myList.extend(scope.collectAllScopes())
+        return myList
+             
 # def __rootScopeInit():
 #     if Scope.classInit:
 #         Scope.classInit = False
@@ -83,9 +101,26 @@ def getCurrentScope():
 def printScopes():
     for scope in Scope.scopes:
         print scope.translator
+        #print '===== translator ======'
+        #print scope.antiTranslator
+        #print '=== anti translator ==='
 
-def clearScopes():
-    Scope.scopes = []
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+def clearScopes(list=None):
+    if list == None:
+        Scope.scopes = []
+    else:
+        for item in list:
+            try:
+                Scope.scopes.remove(item)
+            except:
+                pass
         
         
         

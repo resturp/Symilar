@@ -21,8 +21,10 @@ limitations under the License.
 """
 
 import importlib
+import string
 from types import ModuleType
 import inspect
+from IPython.utils._tokenize_py2 import String
 
 def createModuleDict(getNamesFromModule):
     '''Given a modulename create a dict with all imported names.'''
@@ -60,8 +62,14 @@ def getKeywords():
     
 def getBuiltInNames():
     
+    
 
     buildinNames = createModuleDict('__builtin__')
     buildinNames.update(getKeywords())
+    
+    #ascii_dict = {}
+    #for key in list (string.ascii_lowercase + string.ascii_uppercase + string.digits):
+    #    ascii_dict[key] = key
+    #buildinNames.update(ascii_dict)
     return buildinNames
 

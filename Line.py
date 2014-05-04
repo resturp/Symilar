@@ -46,6 +46,9 @@ class Line(object):
         preservenext = False
         loadTranslator = False
         self.nextParent = False
+        self.waitForQuote = False
+        self.surpresParentheses = False
+        self.parentheses = 0
         lastword = ''
         replaceNextBy = ''
         #this should not be done for each line but once, maybe per scopechange?
@@ -58,6 +61,23 @@ class Line(object):
             for bone in self.line[pivot:self.line.find(word,pivot)]:
                 if not bone in [' ','\t','\n']:
                     self.skel.append(bone)
+#                 if bone in ['"']:
+#                     if not self.waitForQuote:
+#                         indentLevel(self.indent + self.parentheses + 1)
+#                         self.scope = Scope(self.indent + self.parentheses + 1)
+#                     else:
+#                         indentLevel(self.indent + self.parentheses)
+#                         self.scope = getCurrentScope()        
+#                     self.waitForQuote = not self.waitForQuote
+                if not self.surpresParentheses:
+                    if bone in ['(','[','{']:
+                        self.parentheses +=1
+                        indentLevel(self.indent + self.parentheses)
+                        self.scope = Scope(self.indent + self.parentheses)
+                    if bone in [')',']','}']:
+                        self.parentheses -=1
+                        indentLevel(self.indent + self.parentheses)
+                        self.scope = getCurrentScope()
                 pivot +=1
             pivot += len(word)
             #=======================
@@ -76,6 +96,7 @@ class Line(object):
                 replaceNextBy = lastword
             if word in ['def', 'class']:
                 self.nextParent = True
+                self.surpresParentheses = True
             if preservenext:
                 if not word in self.allTranslators.keys():
                     self.updateAllTranslators(word, word)
@@ -98,13 +119,24 @@ class Line(object):
                     except:
                         if self.nextParent:
                             #! actually methods, classes and vars should have independant counters
+                            self.scope.methods[word] = self.scope
                             self.updateAllTranslators(word, 'meth' + ('00000' + str(self.scope.parent.varCount))[-5:])
                             self.scope.parent.varCount += 1
                             self.nextParent = False
                         else:
-                            self.updateAllTranslators(word, 'name' + ('00000' + str(self.scope.varCount))[-5:])
-                            self.scope.varCount += 1
+                            if self.parentheses > 0 and self.line[pivot:].strip()[0] == '=':
+                                #It's not correct to add this word to the antitranslater of the current scope
+                                #let try to create a new scope for every ( and [ and switch back to it's parent after ] or )
+                                methodScope = self.scope.parent.getScopeByMethode(self.scope.parent.lastword)
+                                try:
+                                    self.updateAllTranslators(word,methodScope.getScopeTranslators()[word])
+                                except:
+                                    self.updateAllTranslators(word,word)
+                            else:
+                                self.updateAllTranslators(word, 'name' + ('00000' + str(self.scope.varCount))[-5:])
+                                self.scope.varCount += 1
             lastword = word
+            self.scope.lastword = word
             #append translated word to skeleton
             if word in self.scope.getScopeTranslators().keys():
                 self.skel.append(self.scope.getScopeTranslators()[word])
@@ -120,22 +152,26 @@ class Line(object):
     def replaceStringLiterals(self):    
                     
         toReturn = ''
-        for quote in ['"""',"'''",'"','"']:
+        for quote in ['"""',"'''",'"',"'"]:
             quoteCount = 0
             for part in self.line.split(quote):
-                if len(part) == 9 and re.match(r"const[0-9]{4}", part):
-                    toReturn += '"' + part + '"'
-                else:    
-                    if quoteCount % 2 == 0:
-                        toReturn += part 
-                    else:
+                if quoteCount % 2 == 0:
+                    toReturn += part 
+                else:
+                    if (len(part) == 9 and re.match(r"const[0-9]{4}", part)):
+                        toReturn += '"' + part + '"'
+                    else:    
                         if part in self.scope.translator.keys():
                             toReturn +=  self.scope.translator[part] 
                         else:
-                            self.scope.constCount += 1
-                            constname = '"const' + ('0000' + str(self.scope.constCount))[-4:] + '"'
-                            self.scope.translator[part] = constname 
-                            toReturn += constname
+                            if len(part) == 1 or is_number(part):
+                                self.scope.antiTranslator[part] = part
+                                toReturn += '"' + part +'"'
+                            else:
+                                self.scope.constCount += 1
+                                constname = '"const' + ('0000' + str(self.scope.constCount))[-4:] + '"'
+                                self.scope.translator[part] = constname 
+                                toReturn += constname
                 quoteCount += 1
             self.line = toReturn
             toReturn = ''

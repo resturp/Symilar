@@ -141,4 +141,9 @@ class Code():
         self.addLineNumbers()
         self.corectMultiLineLiterals()
         self.createBaseMatrix()
+
         
+
+    def __del__(self):
+        myList = self.rootScope.collectAllScopes()
+        clearScopes(myList)
