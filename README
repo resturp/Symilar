@@ -24,4 +24,3 @@ This project is a combination of python files that help me with calculating the 
 - A getHashCopy(): a working copy hashed into chunks representing names, constants, methodnames, classnames operators and symbols.
 - A getWinnow(): a fingerprint of a hashcopy that can be used to compare pieces of code.
 
-
